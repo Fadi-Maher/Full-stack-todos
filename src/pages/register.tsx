@@ -1,7 +1,7 @@
  import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import toast from 'react-hot-toast';
  interface IFormInput {
   userName: string;
   email: string;
@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Register: React.FC = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<IFormInput>();
-  const navigate = useNavigate(); // Use useNavigate hook for navigation
+  const navigate = useNavigate();  
 
 
 
@@ -21,14 +21,17 @@ const Register: React.FC = () => {
         email: data.email,
         password: data.password,
       });
+        console.log('Registration succeeded:', response.data);
+        toast.success("Registration succeeded")
 
-       console.log('Registration Success:', response.data);
-      alert('Registration successful!');
+      // alert('Registration successful!');
       navigate ("/login")
     } catch (error) {
        if (axios.isAxiosError(error)) {
         console.error('Axios error:', error.response?.data);
-        alert('An error occurred while registering');
+        toast.error("Registration failed")
+
+        // alert('An error occurred while registering');
       } else {
         console.error('Error:', error);
         alert('An unexpected error occurred');

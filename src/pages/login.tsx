@@ -1,6 +1,7 @@
  import { useForm, SubmitHandler } from 'react-hook-form';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 interface ILoginInput {
   email: string;
@@ -22,14 +23,17 @@ const Login: React.FC = () => {
         localStorage.setItem('token', response.data.jwt);
       }
 
-       
-       alert('Login successful!');
+      toast.success("Registration succeeded")
+
+      //  alert('Login successful!');
       navigate('/');  
     } catch (error) {
       // Handle errors
       if (axios.isAxiosError(error)) {
         console.error('Axios error:', error.response?.data);
-        alert('Invalid email or password');
+        toast.error("Registration Failed")
+
+        // alert('Invalid email or password');
       } else {
         console.error('Error:', error);
         alert('An unexpected error occurred');

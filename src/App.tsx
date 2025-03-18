@@ -1,11 +1,13 @@
- 
- import { BrowserRouter as Router } from 'react-router-dom';
- import AppRoutes from './router/routes';
-const App: React.FC = () => {
+import { RouterProvider } from "react-router-dom";
+import AppRoutes from "./router/routes";
+import { Toaster } from "react-hot-toast";
+
+const App = () => {
   return (
-    <Router>
-       <AppRoutes />
-    </Router>
+    <main>
+      <RouterProvider router={AppRoutes} />
+      <Toaster/>
+    </main>
   );
 };
 
