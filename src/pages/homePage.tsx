@@ -1,7 +1,9 @@
- 
+ import Todos from "../components/todos"
 function Home() {
   return (
-    <div>homePage</div>
+    <div>
+      <Todos/>
+    </div>
   )
 }
 
