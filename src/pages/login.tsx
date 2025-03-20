@@ -23,7 +23,7 @@ const Login: React.FC = () => {
         localStorage.setItem('token', response.data.jwt);
       }
 
-      toast.success("Registration succeeded")
+      toast.success("login succeeded")
 
       //  alert('Login successful!');
       navigate('/');  
